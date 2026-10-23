@@ -1,3 +1,0 @@
-C:\Services\ModbusMqttGateway\MyConsoleApp.pdb
-C:\Services\ModbusMqttGateway\aspnetcorev2_inprocess.dll
-C:\Services\ModbusMqttGateway\MyConsoleApp.exe
