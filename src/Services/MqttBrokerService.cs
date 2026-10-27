@@ -72,6 +72,19 @@ public sealed class MqttBrokerService
             _subscribed = false;
             GatewayMetrics.MqttConnected.Set(0);
             GatewayMetrics.MqttPublishFailures.WithLabels(messageType).Inc();
+
+            try
+            {
+                if (_client.IsConnected())
+                {
+                    await _client.DisconnectAsync().ConfigureAwait(false);
+                }
+            }
+            catch (Exception disconnectException)
+            {
+                Console.WriteLine($"Failed to reset MQTT connection after publish failure: {disconnectException.Message}");
+            }
+
             throw;
         }
     }
